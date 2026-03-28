@@ -189,7 +189,7 @@ All extracted relations are normalised into one of:
 
 ## Registered Oxlo.ai Email
 
-`your_registered_email@example.com`
+`nrsamrit@gmail.com`
 
 ---
 
