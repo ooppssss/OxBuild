@@ -187,6 +187,24 @@ All extracted relations are normalised into one of:
 
 ---
 
+## Demo 
+
+Example 1:
+doc_ai_companies: `OpenAI was founded by Sam Altman, Elon Musk, and Greg Brockman in San Francisco in 2015. OpenAI developed GPT-4, which is one of the most powerful large language models in the world. Microsoft invested over 10 billion dollars in OpenAI and integrated OpenAI technology into its Bing search engine and Azure cloud platform. Sam Altman serves as the CEO of OpenAI and previously led Y Combinator, the famous startup accelerator based in San Francisco. Elon Musk later left the OpenAI board and founded xAI, his own artificial intelligence company. xAI developed Grok, a large language model that competes directly with GPT-4. Tesla, also led by Elon Musk, uses deep learning and artificial intelligence for its Full Self Driving system. Andrej Karpathy was the Director of AI at Tesla and later joined OpenAI as a researcher before leaving to start his own AI education company. Google DeepMind was formed by the merger of Google Brain and DeepMind and is headquartered in London. DeepMind developed AlphaFold, which solved the protein folding problem and revolutionized biological research. Google invested heavily in Anthropic, an AI safety company founded by Dario Amodei and Daniela Amodei, who were former OpenAI employees. Anthropic developed Claude, an AI assistant that competes with ChatGPT developed by OpenAI. Meta AI is the artificial intelligence research division of Meta, led by Yann LeCun, who is a pioneer in deep learning and convolutional neural networks. Meta released LLaMA, an open source large language model that researchers around the world use freely. Nvidia supplies the GPU hardware that powers almost every major AI company including OpenAI, Google, Meta, and Anthropic. Jensen Huang founded Nvidia and serves as its CEO, making Nvidia one of the most valuable companies in the world due to the AI boom.`
+
+doc_tech_startups: `Sam Altman invested in Stripe, the payments company founded by Patrick Collison and John Collison in San Francisco. Stripe is used by millions of businesses worldwide and is one of the most valuable private companies in the world. Y Combinator, previously run by Sam Altman, has funded companies like Airbnb, Dropbox, and Reddit. Airbnb was founded by Brian Chesky and is headquartered in San Francisco. Peter Thiel co-founded PayPal along with Elon Musk and later founded Palantir, a data analytics company used by governments and intelligence agencies. Palantir uses artificial intelligence and machine learning for its data analysis platforms. Peter Thiel also invested early in Facebook, which later became Meta. Sequoia Capital is a venture capital firm that invested in Apple, Google, and OpenAI. Andreessen Horowitz, also known as a16z, invested in OpenAI, Airbnb, and many other major tech companies. Jensen Huang is on the board of several AI startups and has partnerships with Microsoft and Google for GPU supply agreements. Elon Musk acquired Twitter and rebranded it as X, aiming to turn it into an everything app. X competes with Meta platforms including Instagram and Facebook in the social media space.`
+
+<img width="625" height="738" alt="Screenshot 2026-04-02 at 15 05 41" src="https://github.com/user-attachments/assets/9ba70b55-0844-45bf-b062-297e7ceef2de" />
+
+
+Example 2:
+doc_space: `NASA launched the Artemis mission to send humans back to the Moon. SpaceX is providing the rocket technology for the Artemis mission. Elon Musk founded SpaceX in 2002 in Hawthorne, California.`
+
+doc_cars: `Tesla makes electric cars and is headquartered in Austin, Texas. Elon Musk is the CEO of Tesla. Ford and Tesla compete in the electric vehicle market.`
+
+
+---
+
 ## Registered Oxlo.ai Email
 
 `nrsamrit@gmail.com`
