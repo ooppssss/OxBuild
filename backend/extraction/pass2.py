@@ -1,6 +1,7 @@
 import json
 from config import oxlo_client, MODEL_RESOLVE, RELATION_VOCAB_STR
 from models import RawTriplet
+import asyncio
 
 
 # ── Prompt ────────────────────────────────────────────────────────────────────
@@ -62,30 +63,30 @@ def _build_user_prompt(triplets: list[RawTriplet]) -> str:
 
 # ── Main function ─────────────────────────────────────────────────────────────
 
+  # add this at the top
+
 async def resolve_and_normalise(triplets: list[RawTriplet]) -> list[RawTriplet]:
-    """
-    Pass 2 — resolves entities, normalises relations, deduplicates.
-    Receives ALL triplets from all chunks in one call so the model
-    can resolve entities across chunk boundaries.
-    """
     if not triplets:
         return []
 
     system = SYSTEM_PROMPT.replace("{VOCAB}", RELATION_VOCAB_STR)
+    
+    print(f"[Pass2] Sending {len(triplets)} triplets to Oxlo for normalisation...")
 
-    response = oxlo_client.chat.completions.create(
+    response = await asyncio.to_thread(
+        oxlo_client.chat.completions.create,
         model=MODEL_RESOLVE,
         messages=[
             {"role": "system", "content": system},
             {"role": "user",   "content": _build_user_prompt(triplets)},
         ],
-        temperature=0.0,   # fully deterministic normalisation
+        temperature=0.0,
         max_tokens=3000,
     )
 
+    print(f"[Pass2] Normalisation complete")
     raw = response.choices[0].message.content
     return _parse_response(raw, triplets)
-
 
 # ── Parser ────────────────────────────────────────────────────────────────────
 

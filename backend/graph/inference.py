@@ -2,6 +2,7 @@ import json
 from config import oxlo_client, MODEL_INFER
 from graph.store import graph_store
 from models import InferenceResult
+import asyncio
 
 
 # ── Main function ─────────────────────────────────────────────────────────────
@@ -23,14 +24,15 @@ async def generate_insights() -> list[InferenceResult]:
     if not graph_summary["cross_doc_pairs"]:
         return []
 
-    response = oxlo_client.chat.completions.create(
+    response = await asyncio.to_thread(
+        oxlo_client.chat.completions.create,
         model=MODEL_INFER,
         messages=[
             {"role": "system", "content": _SYSTEM_PROMPT},
             {"role": "user",   "content": _build_user_prompt(graph_summary)},
         ],
-        temperature=0.3,   # slight creativity for inference, still grounded
-        max_tokens=2000,
+        temperature=0.0,
+        max_tokens=3000,
     )
 
     raw = response.choices[0].message.content

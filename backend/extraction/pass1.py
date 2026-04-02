@@ -1,6 +1,7 @@
 import json
 from config import oxlo_client, MODEL_EXTRACT
 from models import RawTriplet
+import asyncio  # add this at the top
 
 
 # ── Prompts ───────────────────────────────────────────────────────────────────
@@ -41,11 +42,13 @@ Return only the JSON array."""
 
 # ── Main function ─────────────────────────────────────────────────────────────
 
+
+
 async def extract_triplets(chunk: str, doc_id: str) -> list[RawTriplet]:
-    """
-    Pass 1 — sends a text chunk to Oxlo and returns raw triplets.
-    """
-    response = oxlo_client.chat.completions.create(
+    print(f"[Pass1] Sending chunk to Oxlo... ({len(chunk)} chars)")
+    
+    response = await asyncio.to_thread(
+        oxlo_client.chat.completions.create,
         model=MODEL_EXTRACT,
         messages=[
             {"role": "system", "content": SYSTEM_PROMPT},
@@ -54,7 +57,8 @@ async def extract_triplets(chunk: str, doc_id: str) -> list[RawTriplet]:
         temperature=0.1,
         max_tokens=1500,
     )
-
+    
+    print(f"[Pass1] Got response from Oxlo")
     raw = response.choices[0].message.content
     return _parse_response(raw, doc_id)
 

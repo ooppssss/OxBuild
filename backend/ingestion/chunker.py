@@ -31,6 +31,7 @@ def _build_chunks(sentences: list[str]) -> list[str]:
         if current_len + sentence_len <= CHUNK_SIZE:
             current_chunk.append(sentence)
             current_len += sentence_len + 1
+            i+= 1
         else:
             if current_chunk:
                 chunks.append(" ".join(current_chunk))

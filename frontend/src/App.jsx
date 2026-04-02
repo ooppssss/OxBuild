@@ -11,10 +11,13 @@ export default function App() {
   const [insights, setInsights] = useState([])
 
   async function handleIngest(endpoint, options){
+    console.log('handleIngest called', endpoint) 
     setLoading(true)
     try{
         const res = await fetch(`http://localhost:8000${endpoint}`, options)
+        console.log('response status', res.status)  // add this
         const data = await res.json()
+        console.log('data received', data)
 
         setGraph({
             nodes: data.graph.nodes.map(n => ({ id: n.id, label: n.label, doc_ids: n.doc_ids })),

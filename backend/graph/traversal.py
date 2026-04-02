@@ -3,6 +3,7 @@ from collections import deque
 from config import oxlo_client, MODEL_QUERY
 from graph.store import graph_store
 from models import QueryResponse, GraphData, Node, Edge
+import asyncio
 
 
 # ── Main function ─────────────────────────────────────────────────────────────
@@ -59,7 +60,8 @@ async def _parse_query_to_entity(query: str) -> str:
     if len(query.split()) <= 3 and "?" not in query:
         return query.strip()
 
-    response = oxlo_client.chat.completions.create(
+    response = await asyncio.to_thread(
+        oxlo_client.chat.completions.create,
         model=MODEL_QUERY,
         messages=[
             {
