@@ -15,6 +15,8 @@ Information is trapped in messy paragraphs. RAG systems retrieve text chunks but
 ## Demo
 
 **Paste two documents → watch the graph build → discover hidden cross-document links**
+✅ Backend live: https://oxbuild.onrender.com
+✅ Frontend live: https://graphmindfrontend.vercel.app
 
 ![GraphMind Demo](./assets/demo.png)
 
