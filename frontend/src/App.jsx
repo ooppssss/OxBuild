@@ -3,6 +3,7 @@ import TextInput from './components/TextInput'
 import FileInput from './components/FileInput'
 import GraphCanvas from './components/GraphCanvas'
 import InsightsPanel from './components/InsightsPanel'
+const API = import.meta.env.VITE_API_URL
 
 export default function App() {
   const [graph, setGraph] = useState({ nodes: [], links: [] })
@@ -14,7 +15,7 @@ export default function App() {
     console.log('handleIngest called', endpoint) 
     setLoading(true)
     try{
-        const res = await fetch(`http://localhost:8000${endpoint}`, options)
+        const res = await fetch(`${API}${endpoint}`, options)
         console.log('response status', res.status)  // add this
         const data = await res.json()
         console.log('data received', data)
@@ -39,7 +40,7 @@ export default function App() {
   async function handleInsights() {
     setLoading(true)
     try {
-        const res = await fetch('http://localhost:8000/inference')
+        const res = await fetch(`${API}/inference`)
         const data = await res.json()
         setInsights(data.insights)
     } catch (err) {

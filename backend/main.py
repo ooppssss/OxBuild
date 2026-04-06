@@ -33,12 +33,12 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:5173",
         "https://*.vercel.app",
+        "https://graphmindfrontend.vercel.app",
     ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 
 # ── Health check ──────────────────────────────────────────────────────────────
 @app.get("/health")
